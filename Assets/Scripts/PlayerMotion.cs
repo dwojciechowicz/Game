@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMotion : MonoBehaviour
 {
     public Rigidbody rb;
+    public Text currentScore;
     private float forwardSpeed = 250f;
     private float sideSpeed = 200f;
+    private float score;
 
     
     // Update is called once per frame
@@ -25,6 +28,7 @@ public class PlayerMotion : MonoBehaviour
         {
             FindObjectOfType<GameManager>().GameOver();
         }
-
+        score = rb.position.x/10.0f;
+        currentScore.text = ((int)score).ToString();
     }
 }
