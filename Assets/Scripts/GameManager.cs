@@ -2,17 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour
 {
     bool GameEnded = false;
+    public GameObject deathMenu;
+    public Text endScore;
+
+    private void Start()
+    {
+        deathMenu.SetActive(false);
+    }
+
     public void GameOver()
     {
         if (GameEnded == false)
         {
             GameEnded = true;
-            Debug.Log("Game over!!!");
-            Invoke("Restart", 1);
+            float score = FindObjectOfType<PlayerMotion>().getScore();
+            deathMenu.SetActive(true);
+            endScore.text = ((int)score).ToString();
+            Invoke("Restart", 2);
         }
     }
 
