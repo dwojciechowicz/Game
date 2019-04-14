@@ -24,11 +24,19 @@ public class GameManager : MonoBehaviour
             float score = FindObjectOfType<PlayerMotion>().getScore();
             deathMenu.SetActive(true);
             endScore.text = ((int)score).ToString();
-            Invoke("Restart", 2);
+            //Invoke("Restart", 2);
         }
+    }
+    public void ToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void ToLevel1()
     {
         SceneManager.LoadScene("Level1");
     }
