@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     bool GameEnded = false;
     public GameObject deathMenu;
     public Text endScore;
+    public Text highScore;
 
     private void Start()
     {
@@ -24,7 +25,9 @@ public class GameManager : MonoBehaviour
             float score = FindObjectOfType<PlayerMotion>().getScore();
             deathMenu.SetActive(true);
             endScore.text = ((int)score).ToString();
-            //Invoke("Restart", 2);
+            if(score > PlayerPrefs.GetFloat("highscore"))
+            PlayerPrefs.SetFloat("highscore", score);
+            highScore.text = "Highscore: " + ((int)PlayerPrefs.GetFloat("highscore")).ToString();
         }
     }
     public void ToMenu()
@@ -35,10 +38,6 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-    public void ToLevel1()
-    {
-        SceneManager.LoadScene("Level1");
     }
 
 }
