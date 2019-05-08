@@ -9,8 +9,8 @@ public class PlayerMotion : MonoBehaviour
     public Text currentScore;
     private float score;
     //private float forwardSpeed = 5000f;
-    private float sideSpeed = 500f;
-    private float ballSpeed = 4f;
+    private float sideSpeed = 450f;
+    private float ballSpeed = 3f;
 
 
 
@@ -41,6 +41,14 @@ public class PlayerMotion : MonoBehaviour
 
         score = rb.position.x/10.0f;
         currentScore.text = ((int)score).ToString();
+    }
+    void OnTriggerStay(Collider other)
+    {
+        rb.constraints = RigidbodyConstraints.FreezePositionY;
+    }
+    void OnTriggerExit(Collider other)
+    {
+        rb.constraints = RigidbodyConstraints.None;
     }
     public float getScore()
     {
