@@ -991,6 +991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 753382430}
   currentScore: {fileID: 1363180086}
+  ballSpeed: 0
 --- !u!114 &753382436
 MonoBehaviour:
   m_ObjectHideFlags: 0
