@@ -12,7 +12,7 @@ public class TileSpawning : MonoBehaviour
     private int onScreen = 10;
     private int ind;
     private Random random;
-    private List<GameObject> active;
+    public List<GameObject> active;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +34,7 @@ public class TileSpawning : MonoBehaviour
         {
             ind = Random.Range(0, 11);
             Spawn(ind);
-            Delete();
+           // Delete();
         }        
     }
     private void Spawn(int index = 0)
@@ -46,9 +46,10 @@ public class TileSpawning : MonoBehaviour
         x = x + lenght;
         active.Add(gobj);
     }
-    private void Delete()
+   /* private void Delete()
     {
         Destroy(active[0]);
         active.RemoveAt(0);
     }
+    */
 }

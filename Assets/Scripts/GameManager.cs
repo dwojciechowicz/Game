@@ -11,10 +11,14 @@ public class GameManager : MonoBehaviour
     public GameObject deathMenu;
     public Text endScore;
     public Text highScore;
+    public TileSpawning ts;
+    public PlayerMotion pm;
 
     private void Start()
     {
         deathMenu.SetActive(false);
+        ts = FindObjectOfType<TileSpawning>();
+        pm = FindObjectOfType<PlayerMotion>();
     }
 
     public void GameOver()
@@ -39,6 +43,18 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
+    public void Save()
+    {
+        SaveGame.SaveData(pm,ts);
+    }
+    public void Load()
+    {
+        PlayerData data = SaveGame.LoadData();
+        Vector3 position;
+        position.x = data.position[0];
+        position.y = data.position[1];
+        position.z = data.position[2];
+        pm.rb.transform.position = position;
+    }
 }
 
