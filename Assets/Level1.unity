@@ -879,6 +879,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathMenu: {fileID: 445298965}
+  SaveButton: {fileID: 1666811139}
+  LoadButton: {fileID: 67390407}
   endScore: {fileID: 1470047445}
   highScore: {fileID: 420612348}
   ts: {fileID: 1870821584}

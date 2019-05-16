@@ -9,15 +9,17 @@ public class GameManager : MonoBehaviour
 {
     bool GameEnded = false;
     public GameObject deathMenu;
+    public GameObject SaveButton;
+    public GameObject LoadButton;
     public Text endScore;
     public Text highScore;
-    public TileSpawning ts;
+    //public TileSpawning ts;
     public PlayerMotion pm;
 
     private void Start()
     {
         deathMenu.SetActive(false);
-        ts = FindObjectOfType<TileSpawning>();
+       // ts = FindObjectOfType<TileSpawning>();
         pm = FindObjectOfType<PlayerMotion>();
     }
 
@@ -26,12 +28,14 @@ public class GameManager : MonoBehaviour
         if (GameEnded == false)
         {
             GameEnded = true;
-            float score = FindObjectOfType<PlayerMotion>().getScore();
+            float score = pm.getScore();
             deathMenu.SetActive(true);
             endScore.text = ((int)score).ToString();
             if(score > PlayerPrefs.GetFloat("highscore"))
             PlayerPrefs.SetFloat("highscore", score);
             highScore.text = "Highscore: " + ((int)PlayerPrefs.GetFloat("highscore")).ToString();
+            SaveButton.SetActive(false);
+            LoadButton.SetActive(false);
         }
     }
     public void ToMenu()
@@ -45,7 +49,7 @@ public class GameManager : MonoBehaviour
     }
     public void Save()
     {
-        SaveGame.SaveData(pm,ts);
+        SaveGame.SaveData(pm);
     }
     public void Load()
     {

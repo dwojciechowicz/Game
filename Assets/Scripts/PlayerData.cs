@@ -7,7 +7,7 @@ public class PlayerData
 {
     public float[] position;
     //public List<GameObject> tiles;
-    public PlayerData(PlayerMotion player, TileSpawning board)
+    public PlayerData(PlayerMotion player)
     {
         position = new float[3];
         position[0] = player.rb.transform.position.x;

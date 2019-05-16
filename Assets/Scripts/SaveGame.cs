@@ -4,12 +4,12 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveGame
 {
-    public static void SaveData(PlayerMotion pl, TileSpawning ts)
+    public static void SaveData(PlayerMotion pl)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/data.txt";
         FileStream stream = new FileStream(path, FileMode.Create);
-        PlayerData data = new PlayerData(pl, ts);
+        PlayerData data = new PlayerData(pl);
         formatter.Serialize(stream, data);
         stream.Close();
     }
