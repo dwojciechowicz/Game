@@ -22,8 +22,14 @@ public class TileSpawning : MonoBehaviour
         Spawn();
         for (int i = 2; i < onScreen; ++i)
         {
-            ind = Random.Range(0, 11);
-            Spawn(ind);
+            if (PlayerPrefs.GetInt("debugmode",1) == 1)
+            {
+                ind = Random.Range(0, 11);
+                Spawn(ind);
+                // Delete();
+            }
+            else
+                Spawn();
         }
     }
 
@@ -32,9 +38,14 @@ public class TileSpawning : MonoBehaviour
     {
         if (playerTransform.position.x - extra > (x - (onScreen * lenght)))
         {
-            ind = Random.Range(0, 11);
-            Spawn(ind);
-           // Delete();
+            if (PlayerPrefs.GetInt("debugmode",1)==1)
+            {
+                ind = Random.Range(0, 11);
+                Spawn(ind);
+                // Delete();
+            }
+            else
+                Spawn();
         }        
     }
     private void Spawn(int index = 0)

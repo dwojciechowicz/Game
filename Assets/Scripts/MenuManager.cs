@@ -6,6 +6,13 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    private void Start()
+    {
+        if(PlayerPrefs.GetInt("debugmode",1)==0)
+        GameObject.FindGameObjectWithTag("TButton").GetComponent<Toggle>().isOn = true;
+        else
+        GameObject.FindGameObjectWithTag("TButton").GetComponent<Toggle>().isOn = false;
+    }
     public void ToLevel1()
     {
         SceneManager.LoadScene("Level1");
@@ -17,5 +24,12 @@ public class MenuManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+    public void ToggleChanged(bool state)
+    {
+        if(state)
+        PlayerPrefs.SetInt("debugmode",0);
+        else
+        PlayerPrefs.SetInt("debugmode",1);
     }
 }
