@@ -20,14 +20,20 @@ public class PlayerMotion : MonoBehaviour
        //  rb.AddTorque(0, 0, -forwardSpeed * Time.deltaTime);
        //  rb.AddForce(ballSpeed * Time.deltaTime, 0, 0);
         rb.AddForceAtPosition(new Vector3(ballSpeed,0,0),new Vector3(rb.position.x, rb.position.y + 0.4f, rb.position.z));
-         if(Input.GetKey("left"))
-         {
-             rb.AddForce(0, 0, sideSpeed * Time.deltaTime);
-         }
-         if (Input.GetKey("right"))
-         {
-             rb.AddForce(0, 0, -sideSpeed * Time.deltaTime);
-         }
+        
+        if (Input.touchCount > 0)
+        {
+            //if(Input.GetKey("left"))
+            if (Input.GetTouch(0).position.x <= (Screen.width/2))
+            {
+                rb.AddForce(0, 0, sideSpeed * Time.deltaTime);
+            }
+            //if (Input.GetKey("right"))
+            else
+            {
+                rb.AddForce(0, 0, -sideSpeed * Time.deltaTime);
+            }
+        }
          
         /*float xSpeed = Input.GetAxis("Horizontal");
         float ySpeed = Input.GetAxis("Vertical");
