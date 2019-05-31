@@ -9,8 +9,8 @@ public class PlayerMotion : MonoBehaviour
     public Text currentScore;
     private float score;
     //private float forwardSpeed = 5000f;
-    private float sideSpeed = 450f;
-    private float ballSpeed = 3f;
+    private float sideSpeed = 600f;
+    private float ballSpeed = 7f;
 
 
 
@@ -18,17 +18,17 @@ public class PlayerMotion : MonoBehaviour
     void FixedUpdate()
     {
        //  rb.AddTorque(0, 0, -forwardSpeed * Time.deltaTime);
-       //  rb.AddForce(ballSpeed * Time.deltaTime, 0, 0);
-        rb.AddForceAtPosition(new Vector3(ballSpeed,0,0),new Vector3(rb.position.x, rb.position.y + 0.4f, rb.position.z));
+         //rb.AddForce(ballSpeed * Time.deltaTime, 0, 0);
+        rb.AddForceAtPosition(new Vector3(ballSpeed,0,0),new Vector3(rb.position.x, rb.position.y + 0.45f, rb.position.z));
         
         if (Input.touchCount > 0)
-        {
-            //if(Input.GetKey("left"))
-            if (Input.GetTouch(0).position.x <= (Screen.width/2))
+       {
+       //     if(Input.GetKey("left"))
+          if (Input.GetTouch(0).position.x <= (Screen.width/2))
             {
                 rb.AddForce(0, 0, sideSpeed * Time.deltaTime);
             }
-            //if (Input.GetKey("right"))
+         //   if (Input.GetKey("right"))
             else
             {
                 rb.AddForce(0, 0, -sideSpeed * Time.deltaTime);
