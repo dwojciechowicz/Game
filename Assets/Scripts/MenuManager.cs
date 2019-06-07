@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    public GameObject info;
     private void Start()
     {
+        info.SetActive(false);
         if(PlayerPrefs.GetInt("debugmode",1)==0)
         GameObject.FindGameObjectWithTag("TButton").GetComponent<Toggle>().isOn = true;
         else
@@ -15,11 +17,13 @@ public class MenuManager : MonoBehaviour
     }
     public void ToLevel1()
     {
-        SceneManager.LoadScene("Level1");
+        ToLevelScene tls = new ToLevelScene();
+        tls.ToLevel1();
     }
     public void ToHighscore()
     {
-        SceneManager.LoadScene("Highscore");
+        ToHighscoreScene ths = new ToHighscoreScene();
+        ths.ToHighscore();
     }
     public void ExitGame()
     {
@@ -31,5 +35,26 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetInt("debugmode",0);
         else
         PlayerPrefs.SetInt("debugmode",1);
+    }
+    public void Information()
+    {
+        if (info.activeSelf.Equals(false))
+            info.SetActive(true);
+        else
+            info.SetActive(false);
+    }
+}
+public class ToHighscoreScene
+{
+    public void ToHighscore()
+    {
+        SceneManager.LoadScene("Highscore");
+    }
+}
+public class ToLevelScene
+{
+    public void ToLevel1()
+    {
+        SceneManager.LoadScene("Level1");
     }
 }
